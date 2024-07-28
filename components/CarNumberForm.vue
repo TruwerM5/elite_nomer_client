@@ -8,11 +8,27 @@ function uppercaseNumberId() {
     numberStore.id_value = numberStore.id_value.toUpperCase(); 
 }
 
-function onKeyUp() {
+function onKeyUp(e:any) {
+    // let value = e.target.value.toUpperCase();
     uppercaseNumberId();
+    let filtered = numberStore.id_value.split('').filter(char => numberStore.allowed_characters.includes(char)).join('');
+    numberStore.id_value = filtered;
     if(numberStore.id_value.length == 6) {
         region_input.value.focus();
     }
+    let isAllowed = false;
+    const last_character = numberStore.id_value[numberStore.id_value.length - 1];
+
+
+
+    // for(let char of numberStore.allowed_characters) {
+    //     if(last_character && (last_character.toString() == char.toString())) {
+    //         isAllowed = true;
+    //     } else {
+    //         numberStore.id_value = numberStore.id_value.replace(last_character, '');
+    //     }
+    // }
+
 }
 
 
@@ -26,7 +42,8 @@ function onKeyUp() {
             placeholder="М707РН"
             class="car-number-form__input car-number-form__id-input"
             v-model="numberStore.id_value"
-            @keyup="onKeyUp">
+            @keyup="onKeyUp"
+            pattern="[АВЕКМНОРСТУХ1234567890]+">
         </div>
         <div class="car-number-form__region">
             <input type="text" name="number_region" id="number_region" 

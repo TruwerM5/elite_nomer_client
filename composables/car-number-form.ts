@@ -5,7 +5,7 @@ export const useCarNumberStore = defineStore('car-number', {
             region_value: '',
             numbers: '',
             characters: '',
-            allowed_characters: 'АВЕКМНОРСТУХ'
+            allowed_characters: 'АВЕКМНОРСТУХ1234567890'
         }
     },
     actions: {
